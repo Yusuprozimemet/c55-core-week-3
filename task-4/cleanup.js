@@ -58,8 +58,8 @@ function displayWeatherReport(cityName, tempCelsius, windSpeed) {
   console.log("---");
 }
 
-displayWeatherReport(cityName1, tempCelsius1, windSpeed1);
-displayWeatherReport(cityName2, tempCelsius2, windSpeed2);
-displayWeatherReport(cityName3, tempCelsius3, windSpeed3);
-displayWeatherReport(cityName4, tempCelsius4, windSpeed4);
-displayWeatherReport(cityName5, tempCelsius5, windSpeed5);
+console.log(displayWeatherReport(cityName1, tempCelsius1, windSpeed1));
+console.log(displayWeatherReport(cityName2, tempCelsius2, windSpeed2));
+console.log(displayWeatherReport(cityName3, tempCelsius3, windSpeed3));
+console.log(displayWeatherReport(cityName4, tempCelsius4, windSpeed4));
+console.log(displayWeatherReport(cityName5, tempCelsius5, windSpeed5));
