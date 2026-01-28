@@ -1,80 +1,65 @@
-// Temperature conversion and weather report for City 1
 let cityName1 = "Amsterdam";
 let tempCelsius1 = 22;
-let tempFahrenheit1 = (tempCelsius1 * 9 / 5) + 32;
-let tempKelvin1 = tempCelsius1 + 273.15;
-console.log("Weather Report for " + cityName1);
-console.log("Temperature: " + tempCelsius1 + "°C");
-console.log("Temperature: " + tempFahrenheit1 + "°F");
-console.log("Temperature: " + tempKelvin1 + "K");
-if (tempCelsius1 < 0) {
-  console.log("Status: Freezing");
-} else if (tempCelsius1 >= 0 && tempCelsius1 < 10) {
-  console.log("Status: Cold");
-} else if (tempCelsius1 >= 10 && tempCelsius1 < 20) {
-  console.log("Status: Mild");
-} else if (tempCelsius1 >= 20 && tempCelsius1 < 30) {
-  console.log("Status: Warm");
-} else {
-  console.log("Status: Hot");
-}
-console.log("---");
+let windSpeed1 = 15;
 
-// Temperature conversion and weather report for City 2
 let cityName2 = "Berlin";
 let tempCelsius2 = 15;
-let tempFahrenheit2 = (tempCelsius2 * 9 / 5) + 32;
-let tempKelvin2 = tempCelsius2 + 273.15;
-console.log("Weather Report for " + cityName2);
-console.log("Temperature: " + tempCelsius2 + "°C");
-console.log("Temperature: " + tempFahrenheit2 + "°F");
-console.log("Temperature: " + tempKelvin2 + "K");
-if (tempCelsius2 < 0) {
-  console.log("Status: Freezing");
-} else if (tempCelsius2 >= 0 && tempCelsius2 < 10) {
-  console.log("Status: Cold");
-} else if (tempCelsius2 >= 10 && tempCelsius2 < 20) {
-  console.log("Status: Mild");
-} else if (tempCelsius2 >= 20 && tempCelsius2 < 30) {
-  console.log("Status: Warm");
-} else {
-  console.log("Status: Hot");
-}
-console.log("---");
+let windSpeed2 = 20;
 
-// Temperature conversion and weather report for City 3
 let cityName3 = "Copenhagen";
 let tempCelsius3 = -5;
-let tempFahrenheit3 = (tempCelsius3 * 9 / 5) + 32;
-let tempKelvin3 = tempCelsius3 + 273.15;
-console.log("Weather Report for " + cityName3);
-console.log("Temperature: " + tempCelsius3 + "°C");
-console.log("Temperature: " + tempFahrenheit3 + "°F");
-console.log("Temperature: " + tempKelvin3 + "K");
-if (tempCelsius3 < 0) {
+let windSpeed3 = 25;
+
+let cityName4 = "Dublin";
+let tempCelsius4 = 8;
+let windSpeed4 = 10;
+
+let cityName5 = "Edinburgh";
+let tempCelsius5 = 12;
+let windSpeed5 = 18;
+
+
+function temperatureConversions(tempCelsius) {
+  let tempFahrenheit = (tempCelsius * 9 / 5) + 32;
+  let tempKelvin = tempCelsius + 273.15;
+  return { tempFahrenheit, tempKelvin };
+}
+
+function weatherReport(tempCelsius) {
+if (tempCelsius < 0) {
   console.log("Status: Freezing");
-} else if (tempCelsius3 >= 0 && tempCelsius3 < 10) {
+} else if (tempCelsius >= 0 && tempCelsius < 10) {
   console.log("Status: Cold");
-} else if (tempCelsius3 >= 10 && tempCelsius3 < 20) {
+} else if (tempCelsius >= 10 && tempCelsius < 20) {
   console.log("Status: Mild");
-} else if (tempCelsius3 >= 20 && tempCelsius3 < 30) {
+} else if (tempCelsius >= 20 && tempCelsius < 30) {
   console.log("Status: Warm");
 } else {
   console.log("Status: Hot");
 }
-console.log("---");
+}
 
-// Wind chill calculation for City 1
-let windSpeed1 = 15;
-let windChill1 = 13.12 + 0.6215 * tempCelsius1 - 11.37 * Math.pow(windSpeed1, 0.16) + 0.3965 * tempCelsius1 * Math.pow(windSpeed1, 0.16);
-console.log("Wind chill in " + cityName1 + ": " + windChill1.toFixed(2) + "°C");
+function windChill (tempCelsius, windSpeed) {
+  return 13.12 + 0.6215 * tempCelsius - 11.37 * Math.pow(windSpeed, 0.16) + 0.3965 * tempCelsius * Math.pow(windSpeed, 0.16);
+}
 
-// Wind chill calculation for City 2
-let windSpeed2 = 20;
-let windChill2 = 13.12 + 0.6215 * tempCelsius2 - 11.37 * Math.pow(windSpeed2, 0.16) + 0.3965 * tempCelsius2 * Math.pow(windSpeed2, 0.16);
-console.log("Wind chill in " + cityName2 + ": " + windChill2.toFixed(2) + "°C");
+function displayWeatherReport(cityName, tempCelsius, windSpeed) {
+  let { tempFahrenheit, tempKelvin } = temperatureConversions(tempCelsius);
+  let windChillValue = windChill(tempCelsius, windSpeed);
 
-// Wind chill calculation for City 3
-let windSpeed3 = 25;
-let windChill3 = 13.12 + 0.6215 * tempCelsius3 - 11.37 * Math.pow(windSpeed3, 0.16) + 0.3965 * tempCelsius3 * Math.pow(windSpeed3, 0.16);
-console.log("Wind chill in " + cityName3 + ": " + windChill3.toFixed(2) + "°C");
+  console.log(`Weather Report for ${cityName}`);
+  console.log(`Temperature: ${tempCelsius}°C`);
+  console.log(`Temperature: ${tempFahrenheit.toFixed(1)}°F`);
+  console.log(`Temperature: ${tempKelvin.toFixed(2)}K`);
+  
+  weatherReport(tempCelsius);
+  
+  console.log(`Wind chill in ${cityName}: ${windChillValue.toFixed(2)}°C`);
+  console.log("---");
+}
+
+displayWeatherReport(cityName1, tempCelsius1, windSpeed1);
+displayWeatherReport(cityName2, tempCelsius2, windSpeed2);
+displayWeatherReport(cityName3, tempCelsius3, windSpeed3);
+displayWeatherReport(cityName4, tempCelsius4, windSpeed4);
+displayWeatherReport(cityName5, tempCelsius5, windSpeed5);
